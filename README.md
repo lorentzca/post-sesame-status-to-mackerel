@@ -8,7 +8,7 @@ npm install
 zip -r post-sesame-status-to-mackerel.zip .
 ```
 
-upload to aws lambda.
+upload post-sesame-status-to-mackerel.zip to aws lambda.
 
 require environment variables.
 
