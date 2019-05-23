@@ -8,10 +8,10 @@ const mackerel_api_key = process.env.MACKEREL_API_KEY;
 const mackerel_service_name = process.env.MACKEREL_SERVICE_NAME;
 const mackerel_endpoint = `https://api.mackerelio.com/api/v0/services/${mackerel_service_name}/tsdb`;
 
-const date = new Date() ;
-const sec = Math.floor( date.getTime() / 1000 );
-
 exports.handler = (event) => {
+  const date = new Date() ;
+  const sec = Math.floor( date.getTime() / 1000 );
+
   axios.get(`${sesame_endpoint}/sesame/${sesame_device_id}`, {
       headers:{ 'Authorization': sesame_token }
     })
@@ -22,7 +22,7 @@ exports.handler = (event) => {
           {
             name: 'sesame.battery',
             time: sec,
-            value: response.data.battery
+            value: response.data.battery / 100
           },
           {
             name: 'sesame.locked',
